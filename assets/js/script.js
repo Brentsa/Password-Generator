@@ -5,7 +5,8 @@ var uppercaseArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var numbersArray = "0123456789".split("");
 var specialArray = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~".split("");
 
-function lengthPrompt(){
+function lengthPrompt()
+{
   var passwordLength = parseInt(prompt("Select length of password between 8 and 128 characters."));
   while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)){
     alert("Please enter a valid number between 8 and 128");
@@ -15,34 +16,32 @@ function lengthPrompt(){
 }
 
 //Append values from and array to another array
-function appendCharacters(array, arrayToAppend){
+function appendCharacters(array, arrayToAppend)
+{
   for(var i = 0; i < arrayToAppend.length; i++){
     array.push(arrayToAppend[i]);
   }
 }
 
 //Return a randomly generated number between min and max
-function randomNumber(min, max){
+function randomNumber(min, max)
+{
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function generateRandomCharacters(characterArray, length){
+function generateRandomCharacters(characterArray, length)
+{
   var word = "";
 
   for(var i = 0; i < length; i++){
-    word += characterArray[randomNumber(0, characterArray.length)];
+    word += characterArray[randomNumber(0, characterArray.length - 1)];
   }
 
   return word;
 }
 
-function createPasswordUserCriteria(length, lower, upper, numbers, special){
-  console.log(length);
-  console.log(lower);
-  console.log(upper);
-  console.log(numbers);
-  console.log(special);
-
+function createPasswordUserCriteria(length, lower, upper, numbers, special)
+{  
   var randomCharacterArray = [];
 
   if(lower){
@@ -58,13 +57,18 @@ function createPasswordUserCriteria(length, lower, upper, numbers, special){
     appendCharacters(randomCharacterArray, specialArray);
   }
 
+  console.log(length);
+  console.log(lower);
+  console.log(upper);
+  console.log(numbers);
+  console.log(special);
   console.log(randomCharacterArray);
 
-  return generateRandomCharacters(randomCharacterArray, (length - 1));
+  return generateRandomCharacters(randomCharacterArray, length);
 }
 
-function generatePassword(){
-
+function generatePassword()
+{
   //All user selections arise
   var passwordLength = lengthPrompt();
   var includeLowercase = confirm("Include lowercase characters?");
@@ -73,7 +77,8 @@ function generatePassword(){
   var includeSpecial = confirm("Include special characters?");
 
   //Restart the bool user prompts if the user didnt accept at least one
-  while(!includeLowercase && !includeUppercase && !includeNumbers && !includeSpecial){
+  while(!includeLowercase && !includeUppercase && !includeNumbers && !includeSpecial)
+  {
     alert("You must select at least one criteria.");
     includeLowercase = confirm("Include lowercase characters?");
     includeUppercase = confirm("Include uppercase characters?");
@@ -86,7 +91,8 @@ function generatePassword(){
 }
 
 // Write password to the #password input
-function writePassword() {
+function writePassword() 
+{
   var password = generatePassword();
   
   var passwordText = document.querySelector("#password");

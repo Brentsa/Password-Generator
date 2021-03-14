@@ -11,7 +11,7 @@ Generate a secure random password based on criteria provided by the user.
 ## Website URL
  https://brentsa.github.io/Password-Generator/
 
-## Website Screen
+## Website Screenshot
 ![Website Screenshot](./assets/images/webpage.png)
 
 ## Contribution
